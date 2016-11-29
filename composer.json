@@ -1,0 +1,15 @@
+{
+    "name": "mbarany/php-shapeways-code-test",
+    "type": "project",
+    "require": {
+        "silex/silex": "^2.0",
+        "doctrine/dbal": "^2.5"
+    },
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Michael Barany",
+            "email": "michael.barany@gmail.com"
+        }
+    ]
+}

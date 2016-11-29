@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <!-- Depends on jQuery -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div id="main-container" class="container">
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <!-- #5 Implement a server-side code that renders a page with the form in it. Explain your choices. -->
+            <h1>Server-Side rendered form</h1>
+            <form class="form-comment">
+                <div class="form-group">
+                    <label>User Id:</label>
+                    <input class="form-control" type="text" name="user_id" value="1">
+                </div>
+                <div class="form-group">
+                    <label>Product Id:</label>
+                    <input class="form-control" type="text" name="product_id" value="1">
+                </div>
+                <div class="form-group">
+                    <label>Comment:</label>
+                    <textarea class="form-control" name="comment" placeholder="Type your comment here..."></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        /**
+         * #4 Write a javascript function that submits a comment form
+         */
+        $('.form-comment').on('submit', function (e) {
+            var $form = $(e.currentTarget);
+            var productId = $form.find('[name=product_id]').val();
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '/product/' + productId + '/comment',
+                data: $form.serialize()
+            }).then(function () {
+                alert('Success!');
+            }, function (res) {
+                alert('Error! ' + res.statusText);
+            });
+        });
+    });
+</script>
+</body>
+</html>

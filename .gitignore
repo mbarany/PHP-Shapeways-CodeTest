@@ -1,0 +1,9 @@
+#IDE
+/.idea
+
+#OS
+._DS_Store
+
+#App Specific
+/vendor
+/app.db
